@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon server/server.js"
+    "start": "npx nodemon server/server.js",
+    "dev": "parcel client/src/index.js client/src/index.html -d client/dist",
+    "build": "parcel build client/src/index.js client/src/index.html -d client/dist"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,10 @@
   },
   "homepage": "https://github.com/mikeour/authentication_practice#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.1"
   }
 }
