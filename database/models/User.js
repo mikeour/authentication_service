@@ -1,0 +1,28 @@
+const bcrypt = require("bcrypt");
+
+module.exports = (sequelize, Sequelize) => {
+  const User = sequelize.define(
+    "user",
+    {
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+      },
+      username: {
+        type: Sequelize.TEXT
+      },
+      password: {
+        type: Sequelize.TEXT
+      }
+    },
+    {
+      hooks: {
+        afterValidate: function(user) {
+          user.password = bcrypt.hashSync(user.password, 8);
+        }
+      }
+    }
+  );
+
+  return User;
+};
