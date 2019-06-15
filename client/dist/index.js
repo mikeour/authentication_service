@@ -31373,12 +31373,12 @@ var Home =
 function (_Component) {
   _inherits(Home, _Component);
 
-  function Home(props) {
+  function Home() {
     var _this;
 
     _classCallCheck(this, Home);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this));
     _this.state = {
       message: "Loading..."
     };
