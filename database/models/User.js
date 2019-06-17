@@ -24,5 +24,9 @@ module.exports = (sequelize, Sequelize) => {
     }
   );
 
+  User.associate = ({ AuthToken }) => {
+    User.hasMany(AuthToken);
+  };
+
   return User;
 };
