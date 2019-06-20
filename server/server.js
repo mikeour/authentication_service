@@ -15,9 +15,11 @@ app.get("/api/secret", (req, res) => {
 
 app.post("/api/register", (req, res) => {
   const { username, password } = req.body;
-  createUser(username, password).then(() => {
-    res.status(201).send("Username registered.");
-  });
+  console.log("USERNAME ", username);
+  console.log("PASSWORD ", password);
+  // createUser(username, password).then(() => {
+  //   res.status(201).send("Username registered.");
+  // });
 });
 
 app.listen(3001, () => console.log("Connected on port 3001!"));
