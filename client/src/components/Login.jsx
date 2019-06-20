@@ -5,13 +5,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleUsername = e => {
-    const { name } = e.target;
-    setUsername(name);
+    const { value } = e.target;
+    setUservalue(value);
   };
 
   const handlePassword = e => {
-    const { name } = e.target;
-    setPassword(name);
+    const { value } = e.target;
+    setPassword(value);
   };
 
   const handleSubmit = e => {
