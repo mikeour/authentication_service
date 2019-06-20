@@ -16,7 +16,7 @@ app.get("/api/secret", (req, res) => {
 app.post("/api/register", (req, res) => {
   const { username, password } = req.body;
   createUser(username, password).then(() => {
-    res.send("Username registered.");
+    res.status(201).send("Username registered.");
   });
 });
 
