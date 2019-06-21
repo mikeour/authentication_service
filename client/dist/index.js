@@ -29621,49 +29621,7 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"@babel/runtime/helpers/esm/inheritsLoose":"../../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../../node_modules/react/index.js","react-router":"../../node_modules/react-router/esm/react-router.js","history":"../../node_modules/history/esm/history.js","prop-types":"../../node_modules/prop-types/index.js","tiny-warning":"../../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"context/AuthContext.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.AuthConsumer = exports.AuthProvider = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var AuthContext = _react.default.createContext();
-
-var AuthProvider = function AuthProvider(props) {
-  var _useState = (0, _react.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      hasAuth = _useState2[0],
-      setHasAuth = _useState2[1];
-
-  var handleAuth = function handleAuth() {};
-
-  return _react.default.createElement(AuthContext.Provider, {
-    value: {
-      hasAuth: hasAuth,
-      setHasAuth: setHasAuth,
-      handleAuth: handleAuth
-    }
-  }, props.children);
-};
-
-exports.AuthProvider = AuthProvider;
-var AuthConsumer = AuthContext.Consumer;
-exports.AuthConsumer = AuthConsumer;
-},{"react":"../../node_modules/react/index.js"}],"../../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/inheritsLoose":"../../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"../../node_modules/react/index.js","react-router":"../../node_modules/react-router/esm/react-router.js","history":"../../node_modules/history/esm/history.js","prop-types":"../../node_modules/prop-types/index.js","tiny-warning":"../../node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"../../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"../../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -31427,6 +31385,10 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
@@ -31460,7 +31422,11 @@ var Login = function Login() {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    alert("Authentication coming soon!");
+
+    _axios.default.post("/api/authenticate", {
+      username: username,
+      password: password
+    });
   };
 
   return _react.default.createElement("form", {
@@ -31487,7 +31453,7 @@ var Login = function Login() {
 
 var _default = Login;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"components/Signup.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/Signup.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31565,7 +31531,25 @@ var Signup = function Signup() {
 
 var _default = Signup;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/Secret.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/Forbidden.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Forbidden = function Forbidden() {
+  return _react.default.createElement("h3", null, "You do not have access.");
+};
+
+var _default = Forbidden;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js"}],"components/Secret.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31618,20 +31602,20 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _AuthContext = require("../context/AuthContext");
-
 var _Home = _interopRequireDefault(require("./Home"));
 
 var _Login = _interopRequireDefault(require("./Login"));
 
 var _Signup = _interopRequireDefault(require("./Signup"));
 
+var _Forbidden = _interopRequireDefault(require("./Forbidden"));
+
 var _Secret = _interopRequireDefault(require("./Secret"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return _react.default.createElement(_AuthContext.AuthProvider, null, _react.default.createElement("div", null, _react.default.createElement("ul", null, _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.Link, {
+  return _react.default.createElement("div", null, _react.default.createElement("ul", null, _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, "Home")), _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.Link, {
     to: "/signup"
@@ -31652,12 +31636,12 @@ var App = function App() {
   }), _react.default.createElement(_reactRouterDom.Route, {
     path: "/secret",
     component: _Secret.default
-  }))));
+  })));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../context/AuthContext":"context/AuthContext.js","./Home":"components/Home.jsx","./Login":"components/Login.jsx","./Signup":"components/Signup.jsx","./Secret":"components/Secret.jsx"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Home":"components/Home.jsx","./Login":"components/Login.jsx","./Signup":"components/Signup.jsx","./Forbidden":"components/Forbidden.jsx","./Secret":"components/Secret.jsx"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -31670,8 +31654,8 @@ var _App = _interopRequireDefault(require("./components/App.jsx"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var targetEl = document.getElementById("root");
-(0, _reactDom.render)(_react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_App.default, null)), targetEl);
+var target = document.getElementById("root");
+(0, _reactDom.render)(_react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_App.default, null)), target);
 },{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./components/App.jsx":"components/App.jsx"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

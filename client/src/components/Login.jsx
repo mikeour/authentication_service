@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +17,7 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert("Authentication coming soon!");
+    axios.post("/api/authenticate", { username, password });
   };
 
   return (

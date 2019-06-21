@@ -1,38 +1,36 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
-import { AuthProvider } from "../context/AuthContext";
 import Home from "./Home";
 import Login from "./Login";
 import Signup from "./Signup";
+import Forbidden from "./Forbidden";
 import Secret from "./Secret";
 
 const App = () => {
   return (
-    <AuthProvider>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/signup">Signup</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/secret">Secret</Link>
-          </li>
-        </ul>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/signup">Signup</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/secret">Secret</Link>
+        </li>
+      </ul>
 
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/secret" component={Secret} />
-        </Switch>
-      </div>
-    </AuthProvider>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/secret" component={Secret} />
+      </Switch>
+    </div>
   );
 };
 

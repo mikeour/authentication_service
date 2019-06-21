@@ -26,8 +26,14 @@ module.exports = (sequelize, Sequelize) => {
     }
   );
 
-  User.associate = ({ AuthToken }) => {
-    User.hasMany(AuthToken);
+  User.isCorrectPassword = (password, callback) => {
+    bcrypt.compare(password, this.password, (err, results) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(err, results);
+      }
+    });
   };
 
   return User;

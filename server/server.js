@@ -1,7 +1,13 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 const createUser = require("../database/helpers/createUser.js");
+const comparePasswords = require("../database/helpers/comparePasswords.js");
 const app = express();
 
+const secret = "mysecret";
+
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("client/dist"));
 
@@ -15,11 +21,21 @@ app.get("/api/secret", (req, res) => {
 
 app.post("/api/register", (req, res) => {
   const { username, password } = req.body;
-  console.log("USERNAME ", username);
-  console.log("PASSWORD ", password);
-  // createUser(username, password).then(() => {
-  //   res.status(201).send("Username registered.");
-  // });
+  createUser(username, password).then(() => {
+    res.status(201).send("Username registered.");
+  });
+});
+
+app.post("/api/authenticate", async (req, res) => {
+  const { username, password } = req.body;
+  const correctPassword = await comparePasswords(username, password);
+  if (correctPassword) {
+    const payload = { username };
+    const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+    res.cookie("token", token, { httpOnly: true }).sendStatus(200);
+  } else {
+    res.send("Incorrect password!");
+  }
 });
 
 app.listen(3001, () => console.log("Connected on port 3001!"));
