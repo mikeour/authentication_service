@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
 import Signup from "./Signup";
-import Forbidden from "./Forbidden";
+import Logout from "./Logout";
 import Secret from "./Secret";
 import WithAuth from "./WithAuth";
 
@@ -12,16 +12,19 @@ const App = () => {
     <div>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <Link to="/signup">Signup</Link>
+          <NavLink to="/signup">Signup</NavLink>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <NavLink to="/login">Login</NavLink>
         </li>
         <li>
-          <Link to="/secret">Secret</Link>
+          <NavLink to="/secret">Secret</NavLink>
+        </li>
+        <li>
+          <NavLink to="/logout">Logout</NavLink>
         </li>
       </ul>
 
@@ -30,6 +33,7 @@ const App = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/secret" component={WithAuth(Secret)} />
+        <Route path="/logout" component={Logout} />
       </Switch>
     </div>
   );

@@ -10,8 +10,7 @@ router.get("/home", (req, res) => {
 });
 
 router.get("/secret", withAuth, (req, res) => {
-  console.log("Logged in with ", req.username);
-  res.send("The secret is potato.");
+  res.send("You have accessed secret content.");
 });
 
 router.post("/register", (req, res) => {
@@ -35,6 +34,10 @@ router.post("/authenticate", async (req, res) => {
 
 router.get("/verifyToken", withAuth, (req, res) => {
   res.status(200).send("Verifed");
+});
+
+router.get("/removeToken", withAuth, (req, res) => {
+  res.clearCookie("token").sendStatus(200);
 });
 
 module.exports = router;
