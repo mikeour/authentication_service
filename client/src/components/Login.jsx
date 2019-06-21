@@ -6,7 +6,7 @@ const Login = () => {
 
   const handleUsername = e => {
     const { value } = e.target;
-    setUservalue(value);
+    setUsername(value);
   };
 
   const handlePassword = e => {
@@ -23,7 +23,7 @@ const Login = () => {
     <form onSubmit={handleSubmit}>
       <h1>Login Below!</h1>
       <input
-        type="username"
+        type="text"
         name="username"
         placeholder="Enter username"
         value={username}
@@ -31,7 +31,7 @@ const Login = () => {
         required
       />
       <input
-        type="password"
+        type="text"
         name="password"
         placeholder="Enter password"
         value={password}

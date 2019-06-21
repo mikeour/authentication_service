@@ -1,30 +1,21 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-class Secret extends Component {
-  constructor() {
-    super();
+const Secret = () => {
+  const [message, setMessage] = useState("Loading...");
 
-    this.state = {
-      message: "Loading..."
-    };
-  }
-
-  componentDidMount() {
-    axios.get("/api/secret").then(({ data: message }) => {
-      this.setState({ message });
+  useEffect(() => {
+    axios.get("/api/secret").then(({ data: msg }) => {
+      setMessage(msg);
     });
-  }
+  }, []);
 
-  render() {
-    const { message } = this.state;
-    return (
-      <div>
-        <h1>Secret</h1>
-        {message}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>Secret</h1>
+      {message}
+    </div>
+  );
+};
 
 export default Secret;

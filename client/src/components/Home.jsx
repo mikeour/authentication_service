@@ -1,30 +1,21 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-class Home extends Component {
-  constructor() {
-    super();
+const Home = () => {
+  const [message, setMessage] = useState("Loading...");
 
-    this.state = {
-      message: "Loading..."
-    };
-  }
-
-  componentDidMount() {
-    axios.get("/api/home").then(({ data: message }) => {
-      this.setState({ message });
+  useEffect(() => {
+    axios.get("/api/home").then(({ data: msg }) => {
+      setMessage(msg);
     });
-  }
+  }, []);
 
-  render() {
-    const { message } = this.state;
-    return (
-      <div>
-        <h1>Home</h1>
-        {message}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>Home</h1>
+      {message}
+    </div>
+  );
+};
 
 export default Home;
