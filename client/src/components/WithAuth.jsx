@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from "react";
-import Forbidden from "./Forbidden";
+import React, { Component } from "react";
 import axios from "axios";
 
-const WithAuth = ComponentToProtect => {
+const WithAuth = (ComponentToProtect, ComponentToRedirect) => {
   return class extends Component {
     constructor() {
       super();
@@ -21,15 +20,12 @@ const WithAuth = ComponentToProtect => {
 
     render() {
       const { loading } = this.state;
+
       if (loading) {
-        return <Forbidden />;
+        return <ComponentToRedirect {...this.props} />;
       }
 
-      return (
-        <Fragment>
-          <ComponentToProtect {...this.props} />
-        </Fragment>
-      );
+      return <ComponentToProtect {...this.props} />;
     }
   };
 };

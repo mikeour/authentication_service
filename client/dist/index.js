@@ -31670,8 +31670,6 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Forbidden = _interopRequireDefault(require("./Forbidden"));
-
 var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31696,7 +31694,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-var WithAuth = function WithAuth(ComponentToProtect) {
+var WithAuth = function WithAuth(ComponentToProtect, ComponentToRedirect) {
   return (
     /*#__PURE__*/
     function (_Component) {
@@ -31733,10 +31731,10 @@ var WithAuth = function WithAuth(ComponentToProtect) {
           var loading = this.state.loading;
 
           if (loading) {
-            return _react.default.createElement(_Forbidden.default, null);
+            return _react.default.createElement(ComponentToRedirect, this.props);
           }
 
-          return _react.default.createElement(_react.Fragment, null, _react.default.createElement(ComponentToProtect, this.props));
+          return _react.default.createElement(ComponentToProtect, this.props);
         }
       }]);
 
@@ -31747,7 +31745,7 @@ var WithAuth = function WithAuth(ComponentToProtect) {
 
 var _default = WithAuth;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./Forbidden":"components/Forbidden.jsx","axios":"../../node_modules/axios/index.js"}],"components/App.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/App.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31768,6 +31766,8 @@ var _Signup = _interopRequireDefault(require("./Signup"));
 var _Logout = _interopRequireDefault(require("./Logout"));
 
 var _Secret = _interopRequireDefault(require("./Secret"));
+
+var _Forbidden = _interopRequireDefault(require("./Forbidden"));
 
 var _WithAuth = _interopRequireDefault(require("./WithAuth"));
 
@@ -31796,7 +31796,7 @@ var App = function App() {
     component: _Login.default
   }), _react.default.createElement(_reactRouterDom.Route, {
     path: "/secret",
-    component: (0, _WithAuth.default)(_Secret.default)
+    component: (0, _WithAuth.default)(_Secret.default, _Forbidden.default)
   }), _react.default.createElement(_reactRouterDom.Route, {
     path: "/logout",
     component: _Logout.default
@@ -31805,7 +31805,7 @@ var App = function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Home":"components/Home.jsx","./Login":"components/Login.jsx","./Signup":"components/Signup.jsx","./Logout":"components/Logout.jsx","./Secret":"components/Secret.jsx","./WithAuth":"components/WithAuth.jsx"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Home":"components/Home.jsx","./Login":"components/Login.jsx","./Signup":"components/Signup.jsx","./Logout":"components/Logout.jsx","./Secret":"components/Secret.jsx","./Forbidden":"components/Forbidden.jsx","./WithAuth":"components/WithAuth.jsx"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
