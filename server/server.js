@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
@@ -6,7 +8,8 @@ const createUser = require("../database/helpers/createUser.js");
 const comparePasswords = require("../database/helpers/comparePasswords.js");
 const app = express();
 
-const secret = "mysecret";
+const port = process.env.PORT;
+const secret = process.env.SECRET_TOKEN;
 
 app.use(cookieParser());
 app.use(express.json());
@@ -44,4 +47,4 @@ app.get("/api/verifyToken", withAuth, (req, res) => {
   res.status(200);
 });
 
-app.listen(3001, () => console.log("Connected on port 3001!"));
+app.listen(port, () => console.log(`Connected on port ${port}!`));
