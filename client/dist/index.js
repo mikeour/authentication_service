@@ -31539,17 +31539,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var Forbidden = function Forbidden() {
-  return _react.default.createElement("h3", null, "You do not have access.");
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement("h1", null, "Sorry!"), _react.default.createElement("p", null, "You do not have access. Please ", _react.default.createElement(_reactRouterDom.Link, {
+    to: "/login"
+  }, "login"), " to view this content."));
 };
 
 var _default = Forbidden;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js"}],"components/Secret.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/Secret.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

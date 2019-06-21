@@ -1,5 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
-const Forbidden = () => <h3>You do not have access.</h3>;
+const Forbidden = () => (
+  <Fragment>
+    <h1>Sorry!</h1>
+    <p>
+      You do not have access. Please <Link to="/login">login</Link> to view this
+      content.
+    </p>
+  </Fragment>
+);
 
 export default Forbidden;
