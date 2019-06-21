@@ -5,6 +5,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Forbidden from "./Forbidden";
 import Secret from "./Secret";
+import WithAuth from "./WithAuth";
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const App = () => {
         <Route path="/" exact component={Home} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
-        <Route path="/secret" component={Secret} />
+        <Route path="/secret" component={WithAuth(Secret)} />
       </Switch>
     </div>
   );
