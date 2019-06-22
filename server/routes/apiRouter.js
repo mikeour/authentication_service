@@ -33,7 +33,7 @@ router.post("/authenticate", async (req, res) => {
 });
 
 router.get("/verifyToken", withAuth, (req, res) => {
-  res.status(200).send("Verifed");
+  res.status(200).send(req.username);
 });
 
 router.get("/removeToken", withAuth, (req, res) => {

@@ -6,6 +6,7 @@ import Signup from "./Signup";
 import Logout from "./Logout";
 import Secret from "./Secret";
 import Forbidden from "./Forbidden";
+import Info from "./Info";
 import WithAuth from "./WithAuth";
 
 const App = () => {
@@ -28,6 +29,8 @@ const App = () => {
           <NavLink to="/logout">Logout</NavLink>
         </li>
       </ul>
+
+      <Info />
 
       <Switch>
         <Route path="/" exact component={Home} />
