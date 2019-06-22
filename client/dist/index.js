@@ -31334,7 +31334,54 @@ module.exports.default = axios;
 
 },{"./utils":"../../node_modules/axios/lib/utils.js","./helpers/bind":"../../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../../node_modules/axios/lib/helpers/spread.js"}],"../../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"components/Home.jsx":[function(require,module,exports) {
+},{"./lib/axios":"../../node_modules/axios/lib/axios.js"}],"context/AuthContext.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AuthProvider = exports.AuthContext = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var AuthContext = (0, _react.createContext)();
+exports.AuthContext = AuthContext;
+
+var AuthProvider = function AuthProvider(props) {
+  var _useState = (0, _react.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      username = _useState2[0],
+      setUsername = _useState2[1];
+
+  (0, _react.useEffect)(function () {
+    _axios.default.get("/api/verifyToken").then(function (_ref) {
+      var name = _ref.data;
+      setUsername(name);
+    });
+  }, []);
+  return _react.default.createElement(AuthContext.Provider, {
+    value: {
+      username: username
+    }
+  }, props.children);
+};
+
+exports.AuthProvider = AuthProvider;
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/Home.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31670,35 +31717,16 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _axios = _interopRequireDefault(require("axios"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _AuthContext = require("../context/AuthContext.jsx");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 var Info = function Info() {
-  var _useState = (0, _react.useState)(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      username = _useState2[0],
-      setUsername = _useState2[1];
-
-  (0, _react.useEffect)(function () {
-    _axios.default.get("/api/verifyToken").then(function (_ref) {
-      var name = _ref.data;
-      setUsername(name);
-    });
-  });
+  var _useContext = (0, _react.useContext)(_AuthContext.AuthContext),
+      username = _useContext.username;
 
   if (!username) {
-    return _react.default.createElement("span", null, "You are not logged in. ");
+    return _react.default.createElement("span", null, "You are not logged in.");
   }
 
   return _react.default.createElement("span", null, "You are currently logged in as ", username, ".");
@@ -31706,7 +31734,7 @@ var Info = function Info() {
 
 var _default = Info;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/WithAuth.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","../context/AuthContext.jsx":"context/AuthContext.jsx"}],"components/WithAuth.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31850,13 +31878,15 @@ var _reactDom = require("react-dom");
 
 var _reactRouterDom = require("react-router-dom");
 
+var _AuthContext = require("./context/AuthContext.jsx");
+
 var _App = _interopRequireDefault(require("./components/App.jsx"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var target = document.getElementById("root");
-(0, _reactDom.render)(_react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_App.default, null)), target);
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./components/App.jsx":"components/App.jsx"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+(0, _reactDom.render)(_react.default.createElement(_AuthContext.AuthProvider, null, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_App.default, null))), target);
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./context/AuthContext.jsx":"context/AuthContext.jsx","./components/App.jsx":"components/App.jsx"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

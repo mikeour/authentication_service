@@ -1,12 +1,19 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
+import axios from "axios";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = props => {
-  const [hasAuth, setHasAuth] = useState(false);
+  const [username, setUsername] = useState(null);
+
+  useEffect(() => {
+    axios.get("/api/verifyToken").then(({ data: name }) => {
+      setUsername(name);
+    });
+  }, []);
 
   return (
-    <AuthContext.Provider value={[hasAuth, setHasAuth]}>
+    <AuthContext.Provider value={{ username }}>
       {props.children}
     </AuthContext.Provider>
   );

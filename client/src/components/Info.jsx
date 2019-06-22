@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthContext.jsx";
 
 const Info = () => {
-  const [username, setUsername] = useState(null);
-
-  useEffect(() => {
-    axios.get("/api/verifyToken").then(({ data: name }) => {
-      setUsername(name);
-    });
-  });
+  const { username } = useContext(AuthContext);
 
   if (!username) {
-    return <span>You are not logged in. </span>;
+    return <span>You are not logged in.</span>;
   }
 
   return <span>You are currently logged in as {username}.</span>;
