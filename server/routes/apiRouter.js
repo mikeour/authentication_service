@@ -13,6 +13,14 @@ router.get("/secret", withAuth, (req, res) => {
   res.send("You have accessed secret content.");
 });
 
+router.get("/verifyToken", withAuth, (req, res) => {
+  res.send(req.username);
+});
+
+router.get("/removeToken", withAuth, (req, res) => {
+  res.clearCookie("token").sendStatus(200);
+});
+
 router.post("/register", (req, res) => {
   const { username, password } = req.body;
   createUser(username, password).then(() => {
@@ -30,14 +38,6 @@ router.post("/authenticate", async (req, res) => {
   } else {
     res.send("Incorrect password!");
   }
-});
-
-router.get("/verifyToken", withAuth, (req, res) => {
-  res.status(200).send(req.username);
-});
-
-router.get("/removeToken", withAuth, (req, res) => {
-  res.clearCookie("token").sendStatus(200);
 });
 
 module.exports = router;
