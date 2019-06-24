@@ -1,7 +1,12 @@
+import { css } from "@emotion/core";
 import styled from "styled-components";
 
-const StyledDiv = styled.div`
-  border: 1px solid red;
+const appStyles = css`
+  border: 20px solid blue;
 `;
 
-export { StyledDiv };
+const Test = styled.div`
+  border: 15px solid red;
+`;
+
+export { appStyles, Test };

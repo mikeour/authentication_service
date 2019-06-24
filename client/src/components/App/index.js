@@ -1,21 +1,21 @@
 import React, { useContext } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
-import Home from "../Home/";
-import Login from "../Login/";
-import Signup from "../Signup/";
-import Logout from "../Logout/";
-import Secret from "../Secret/";
-import Forbidden from "../Forbidden/";
-import Info from "../Info/";
+import Home from "../Home";
+import Login from "../Login";
+import Signup from "../Signup";
+import Logout from "../Logout";
+import Secret from "../Secret";
+import Forbidden from "../Forbidden";
+import Info from "../Info";
 import WithAuth from "../WithAuth";
-import { StyledDiv } from "./styles";
+import { appStyles, Test } from "./styles";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 const App = () => {
   const { username } = useContext(AuthContext);
 
   return (
-    <StyledDiv>
+    <div css={appStyles}>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -43,7 +43,7 @@ const App = () => {
         <Route path="/secret" component={WithAuth(Secret, Forbidden)} />
         <Route path="/logout" component={Logout} />
       </Switch>
-    </StyledDiv>
+    </div>
   );
 };
 
