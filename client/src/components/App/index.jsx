@@ -1,20 +1,21 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import Login from "./Login";
-import Signup from "./Signup";
-import Logout from "./Logout";
-import Secret from "./Secret";
-import Forbidden from "./Forbidden";
-import Info from "./Info";
-import WithAuth from "./WithAuth";
-import { AuthContext } from "../context/AuthContext.jsx";
+import Home from "../Home/";
+import Login from "../Login/";
+import Signup from "../Signup/";
+import Logout from "../Logout/";
+import Secret from "../Secret/";
+import Forbidden from "../Forbidden/";
+import Info from "../Info/";
+import WithAuth from "../WithAuth";
+import { StyledDiv } from "./styles";
+import { AuthContext } from "../../context/AuthContext.jsx";
 
 const App = () => {
   const { username } = useContext(AuthContext);
 
   return (
-    <div>
+    <StyledDiv>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -42,7 +43,7 @@ const App = () => {
         <Route path="/secret" component={WithAuth(Secret, Forbidden)} />
         <Route path="/logout" component={Logout} />
       </Switch>
-    </div>
+    </StyledDiv>
   );
 };
 
