@@ -31688,6 +31688,10 @@ var Info = function Info(_ref) {
     return _react.default.createElement("span", null, "You are not logged in.");
   }
 
+  if (globalUsername === "Incorrect password!") {
+    return _react.default.createElement("span", null, "Sorry, wrong password. Please try again.");
+  }
+
   return _react.default.createElement("span", null, "You are currently logged in as ", globalUsername, ".");
 };
 
