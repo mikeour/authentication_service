@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setGlobalUsername }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,7 +17,11 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post("/api/authenticate", { username, password });
+    axios
+      .post("/api/authenticate", { username, password })
+      .then(({ data: name }) => {
+        setGlobalUsername(name);
+      });
   };
 
   return (

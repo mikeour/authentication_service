@@ -1,11 +1,11 @@
 import React from "react";
 
-const Info = ({ username }) => {
-  if (!username) {
+const Info = ({ globalUsername }) => {
+  if (!globalUsername) {
     return <span>You are not logged in.</span>;
   }
 
-  return <span>You are currently logged in as {username}.</span>;
+  return <span>You are currently logged in as {globalUsername}.</span>;
 };
 
 export default Info;

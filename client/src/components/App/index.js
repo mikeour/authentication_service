@@ -8,14 +8,13 @@ import Secret from "../Secret";
 import Forbidden from "../Forbidden";
 import Info from "../Info";
 import WithAuth from "../WithAuth";
-import { appStyles, Test } from "./styles";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 const App = () => {
-  const { username } = useContext(AuthContext);
+  const { globalUsername, setGlobalUsername } = useContext(AuthContext);
 
   return (
-    <div css={appStyles}>
+    <div>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -34,14 +33,24 @@ const App = () => {
         </li>
       </ul>
 
-      <Info username={username} />
+      <Info globalUsername={globalUsername} />
 
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
+        <Route
+          path="/login"
+          render={props => (
+            <Login {...props} setGlobalUsername={setGlobalUsername} />
+          )}
+        />
         <Route path="/secret" component={WithAuth(Secret, Forbidden)} />
-        <Route path="/logout" component={Logout} />
+        <Route
+          path="/logout"
+          render={props => (
+            <Logout {...props} setGlobalUsername={setGlobalUsername} />
+          )}
+        />
       </Switch>
     </div>
   );

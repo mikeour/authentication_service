@@ -2,9 +2,11 @@ import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Logout = () => {
+const Logout = ({ setGlobalUsername }) => {
   useEffect(() => {
-    axios.get("api/removeToken");
+    axios.get("api/removeToken").then(() => {
+      setGlobalUsername(null);
+    });
   }, []);
 
   return (

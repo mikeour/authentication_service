@@ -1,19 +1,12 @@
-import React, { useState, useEffect, createContext } from "react";
-import axios from "axios";
+import React, { useState, createContext } from "react";
 
 const AuthContext = createContext();
 
 const AuthProvider = props => {
-  const [username, setUsername] = useState(null);
-
-  useEffect(() => {
-    axios.get("/api/verifyToken").then(({ data: name }) => {
-      setUsername(name);
-    });
-  }, []);
+  const [globalUsername, setGlobalUsername] = useState(null);
 
   return (
-    <AuthContext.Provider value={{ username, setUsername }}>
+    <AuthContext.Provider value={{ globalUsername, setGlobalUsername }}>
       {props.children}
     </AuthContext.Provider>
   );
