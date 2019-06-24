@@ -1,9 +1,9 @@
 import React, { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
-export const AuthProvider = props => {
+const AuthProvider = props => {
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
@@ -18,3 +18,5 @@ export const AuthProvider = props => {
     </AuthContext.Provider>
   );
 };
+
+export { AuthContext, AuthProvider };
