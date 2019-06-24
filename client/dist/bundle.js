@@ -31375,7 +31375,8 @@ var AuthProvider = function AuthProvider(props) {
   }, []);
   return _react.default.createElement(AuthContext.Provider, {
     value: {
-      username: username
+      username: username,
+      setUsername: setUsername
     }
   }, props.children);
 };
@@ -31433,6 +31434,8 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
+
+var _AuthContext = require("../context/AuthContext.jsx");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31500,7 +31503,7 @@ var Login = function Login() {
 
 var _default = Login;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/Signup.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js","../context/AuthContext.jsx":"context/AuthContext.jsx"}],"components/Signup.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31596,51 +31599,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var Logout =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Logout, _Component);
-
-  function Logout() {
-    _classCallCheck(this, Logout);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Logout).call(this));
-  }
-
-  _createClass(Logout, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      _axios.default.get("/api/removeToken");
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement("h1", null, "Goodbye!"), _react.default.createElement("p", null, "You have successfully logged out. Click ", _react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, "here"), " to return to the home page."));
-    }
-  }]);
-
-  return Logout;
-}(_react.Component);
+var Logout = function Logout() {
+  (0, _react.useEffect)(function () {
+    _axios.default.get("api/removeToken");
+  }, []);
+  return _react.default.createElement(_react.Fragment, null, _react.default.createElement("h1", null, "Goodbye!"), _react.default.createElement("p", null, "You have successfully logged out. Click ", _react.default.createElement(_reactRouterDom.Link, {
+    to: "/"
+  }, "here"), " to return to the home page."));
+};
 
 var _default = Logout;
 exports.default = _default;
@@ -31715,15 +31681,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-var _AuthContext = require("../context/AuthContext.jsx");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-var Info = function Info() {
-  var _useContext = (0, _react.useContext)(_AuthContext.AuthContext),
-      username = _useContext.username;
+var Info = function Info(_ref) {
+  var username = _ref.username;
 
   if (!username) {
     return _react.default.createElement("span", null, "You are not logged in.");
@@ -31734,7 +31697,7 @@ var Info = function Info() {
 
 var _default = Info;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","../context/AuthContext.jsx":"context/AuthContext.jsx"}],"components/WithAuth.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js"}],"components/WithAuth.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31758,30 +31721,6 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// const WithAuth = (ComponentToProtect, ComponentToRedirect) => {
-//   return class extends Component {
-//     constructor() {
-//       super();
-//       this.state = {
-//         loading: true
-//       };
-//     }
-//     componentDidMount() {
-//       axios.get("api/verifyToken").then(res => {
-//         if (res.status === 200) {
-//           this.setState({ loading: false });
-//         }
-//       });
-//     }
-//     render() {
-//       const { loading } = this.state;
-//       if (loading) {
-//         return <ComponentToRedirect {...this.props} />;
-//       }
-//       return <ComponentToProtect {...this.props} />;
-//     }
-//   };
-// };
 var WithAuth = function WithAuth(ComponentToProtect, ComponentToRedirect) {
   return function (props) {
     var _useState = (0, _react.useState)(false),
@@ -31815,7 +31754,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -31835,9 +31774,16 @@ var _Info = _interopRequireDefault(require("./Info"));
 
 var _WithAuth = _interopRequireDefault(require("./WithAuth"));
 
+var _AuthContext = require("../context/AuthContext.jsx");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
 var App = function App() {
+  var _useContext = (0, _react.useContext)(_AuthContext.AuthContext),
+      username = _useContext.username;
+
   return _react.default.createElement("div", null, _react.default.createElement("ul", null, _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/"
   }, "Home")), _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
@@ -31848,7 +31794,9 @@ var App = function App() {
     to: "/secret"
   }, "Secret")), _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/logout"
-  }, "Logout"))), _react.default.createElement(_Info.default, null), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+  }, "Logout"))), _react.default.createElement(_Info.default, {
+    username: username
+  }), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
     path: "/",
     exact: true,
     component: _Home.default
@@ -31869,7 +31817,7 @@ var App = function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Home":"components/Home.jsx","./Login":"components/Login.jsx","./Signup":"components/Signup.jsx","./Logout":"components/Logout.jsx","./Secret":"components/Secret.jsx","./Forbidden":"components/Forbidden.jsx","./Info":"components/Info.jsx","./WithAuth":"components/WithAuth.jsx"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./Home":"components/Home.jsx","./Login":"components/Login.jsx","./Signup":"components/Signup.jsx","./Logout":"components/Logout.jsx","./Secret":"components/Secret.jsx","./Forbidden":"components/Forbidden.jsx","./Info":"components/Info.jsx","./WithAuth":"components/WithAuth.jsx","../context/AuthContext.jsx":"context/AuthContext.jsx"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -31914,7 +31862,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62463" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59415" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -32090,4 +32038,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/index.js.map
+//# sourceMappingURL=/bundle.js.map
