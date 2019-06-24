@@ -1,9 +1,6 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../context/AuthContext.jsx";
+import React from "react";
 
-const Info = () => {
-  const { username } = useContext(AuthContext);
-
+const Info = ({ username }) => {
   if (!username) {
     return <span>You are not logged in.</span>;
   }

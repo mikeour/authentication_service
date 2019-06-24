@@ -13,7 +13,7 @@ export const AuthProvider = props => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ username }}>
+    <AuthContext.Provider value={{ username, setUsername }}>
       {props.children}
     </AuthContext.Provider>
   );

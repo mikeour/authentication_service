@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";
@@ -8,8 +8,11 @@ import Secret from "./Secret";
 import Forbidden from "./Forbidden";
 import Info from "./Info";
 import WithAuth from "./WithAuth";
+import { AuthContext } from "../context/AuthContext.jsx";
 
 const App = () => {
+  const { username } = useContext(AuthContext);
+
   return (
     <div>
       <ul>
@@ -30,7 +33,7 @@ const App = () => {
         </li>
       </ul>
 
-      <Info />
+      <Info username={username} />
 
       <Switch>
         <Route path="/" exact component={Home} />
