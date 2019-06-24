@@ -34,7 +34,7 @@ router.post("/authenticate", async (req, res) => {
   if (correctPassword) {
     const payload = { username };
     const token = jwt.sign(payload, secret, { expiresIn: "1h" });
-    res.cookie("token", token, { httpOnly: true }).sendStatus(200);
+    res.cookie("token", token, { httpOnly: true }).send(username);
   } else {
     res.send("Incorrect password!");
   }
