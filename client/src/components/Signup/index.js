@@ -22,24 +22,28 @@ const Signup = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Signup Below!</h1>
-      <input
-        type="text"
-        name="username"
-        placeholder="Enter username"
-        value={username}
-        onChange={handleUsername}
-        required
-      />
-      <input
-        type="text"
-        name="password"
-        placeholder="Enter password"
-        value={password}
-        onChange={handlePassword}
-        required
-      />
-      <input type="submit" value="Submit" />
+      <div className="form-group">
+        <h1>Signup Below!</h1>
+        <input
+          type="text"
+          className="form-control"
+          name="username"
+          placeholder="Enter username"
+          value={username}
+          onChange={handleUsername}
+          required
+        />
+        <input
+          type="text"
+          className="form-control"
+          name="password"
+          placeholder="Enter password"
+          value={password}
+          onChange={handlePassword}
+          required
+        />
+        <input type="submit" className="btn btn-primary" value="Submit" />
+      </div>
     </form>
   );
 };

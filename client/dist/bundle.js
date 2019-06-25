@@ -31382,6 +31382,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -31408,12 +31410,25 @@ var Home = function Home() {
       setMessage(msg);
     });
   }, []);
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Home"), message);
+  return _react.default.createElement("div", {
+    className: "jumbotron"
+  }, _react.default.createElement("h1", {
+    className: "display-4"
+  }, "Welcome!"), _react.default.createElement("p", {
+    className: "lead"
+  }, "This is my Authentication App."), _react.default.createElement("hr", {
+    className: "my-4"
+  }), _react.default.createElement("p", null, "Please login to see secret content."), _react.default.createElement("button", {
+    className: "btn btn-link btn-lg",
+    role: "button"
+  }, _react.default.createElement(_reactRouterDom.Link, {
+    to: "/login"
+  }, "Login")));
 };
 
 var _default = Home;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/Login/index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../../node_modules/axios/index.js"}],"components/Login/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31474,8 +31489,11 @@ var Login = function Login(_ref) {
 
   return _react.default.createElement("form", {
     onSubmit: handleSubmit
+  }, _react.default.createElement("div", {
+    className: "form-group"
   }, _react.default.createElement("h1", null, "Login Below!"), _react.default.createElement("input", {
     type: "text",
+    className: "form-control",
     name: "username",
     placeholder: "Enter username",
     value: username,
@@ -31484,14 +31502,47 @@ var Login = function Login(_ref) {
   }), _react.default.createElement("input", {
     type: "text",
     name: "password",
+    className: "form-control",
     placeholder: "Enter password",
     value: password,
     onChange: handlePassword,
     required: true
   }), _react.default.createElement("input", {
     type: "submit",
+    className: "btn btn-primary",
+    "data-toggle": "modal",
+    "data-target": "#exampleModalCenter",
     value: "Submit"
-  }));
+  }), _react.default.createElement("div", {
+    className: "modal fade",
+    id: "exampleModalCenter",
+    tabIndex: "-1",
+    role: "dialog",
+    "aria-labelledby": "exampleModalCenterTitle",
+    "aria-hidden": "true"
+  }, _react.default.createElement("div", {
+    className: "modal-dialog modal-dialog-centered",
+    role: "document"
+  }, _react.default.createElement("div", {
+    className: "modal-content"
+  }, _react.default.createElement("div", {
+    className: "modal-header"
+  }, _react.default.createElement("button", {
+    type: "button",
+    className: "close",
+    "data-dismiss": "modal",
+    "aria-label": "Close"
+  }, _react.default.createElement("span", {
+    "aria-hidden": "true"
+  }, "\xD7"))), _react.default.createElement("div", {
+    className: "modal-body"
+  }, "You have logged in!"), _react.default.createElement("div", {
+    className: "modal-footer"
+  }, _react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-primary",
+    "data-dismiss": "modal"
+  }, "Close")))))));
 };
 
 var _default = Login;
@@ -31552,8 +31603,11 @@ var Signup = function Signup() {
 
   return _react.default.createElement("form", {
     onSubmit: handleSubmit
+  }, _react.default.createElement("div", {
+    className: "form-group"
   }, _react.default.createElement("h1", null, "Signup Below!"), _react.default.createElement("input", {
     type: "text",
+    className: "form-control",
     name: "username",
     placeholder: "Enter username",
     value: username,
@@ -31561,6 +31615,7 @@ var Signup = function Signup() {
     required: true
   }), _react.default.createElement("input", {
     type: "text",
+    className: "form-control",
     name: "password",
     placeholder: "Enter password",
     value: password,
@@ -31568,8 +31623,9 @@ var Signup = function Signup() {
     required: true
   }), _react.default.createElement("input", {
     type: "submit",
+    className: "btn btn-primary",
     value: "Submit"
-  }));
+  })));
 };
 
 var _default = Signup;
@@ -31685,14 +31741,20 @@ var Info = function Info(_ref) {
   var globalUsername = _ref.globalUsername;
 
   if (!globalUsername) {
-    return _react.default.createElement("span", null, "You are not logged in.");
+    return _react.default.createElement("span", {
+      className: "justify-content-center"
+    }, "You are not logged in.");
   }
 
   if (globalUsername === "Incorrect password!") {
-    return _react.default.createElement("span", null, "Sorry, wrong password. Please try again.");
+    return _react.default.createElement("span", {
+      className: "justify-content-center"
+    }, "Sorry, wrong password. Please try again.");
   }
 
-  return _react.default.createElement("span", null, "You are currently logged in as ", globalUsername, ".");
+  return _react.default.createElement("span", {
+    className: "justify-content-center"
+  }, "You are currently logged in as ", globalUsername, ".");
 };
 
 var _default = Info;
@@ -31787,15 +31849,27 @@ var App = function App() {
       globalUsername = _useContext.globalUsername,
       setGlobalUsername = _useContext.setGlobalUsername;
 
-  return _react.default.createElement("div", null, _react.default.createElement("ul", null, _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
+  return _react.default.createElement("div", null, _react.default.createElement("ul", {
+    className: "navbar navbar-light bg-light justify-content-center"
+  }, _react.default.createElement("li", {
+    className: "navbar-brand mb-0 h1"
+  }, _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/"
-  }, "Home")), _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Home")), _react.default.createElement("li", {
+    className: "navbar-brand mb-0 h1"
+  }, _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/signup"
-  }, "Signup")), _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Signup")), _react.default.createElement("li", {
+    className: "navbar-brand mb-0 h1"
+  }, _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/login"
-  }, "Login")), _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Login")), _react.default.createElement("li", {
+    className: "navbar-brand mb-0 h1"
+  }, _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/secret"
-  }, "Secret")), _react.default.createElement("li", null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Secret")), _react.default.createElement("li", {
+    className: "navbar-brand mb-0 h1"
+  }, _react.default.createElement(_reactRouterDom.NavLink, {
     to: "/logout"
   }, "Logout"))), _react.default.createElement(_Info.default, {
     globalUsername: globalUsername
@@ -31873,7 +31947,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64546" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61370" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

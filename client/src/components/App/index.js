@@ -15,20 +15,20 @@ const App = () => {
 
   return (
     <div>
-      <ul>
-        <li>
+      <ul className="navbar navbar-light bg-light justify-content-center">
+        <li className="navbar-brand mb-0 h1">
           <NavLink to="/">Home</NavLink>
         </li>
-        <li>
+        <li className="navbar-brand mb-0 h1">
           <NavLink to="/signup">Signup</NavLink>
         </li>
-        <li>
+        <li className="navbar-brand mb-0 h1">
           <NavLink to="/login">Login</NavLink>
         </li>
-        <li>
+        <li className="navbar-brand mb-0 h1">
           <NavLink to="/secret">Secret</NavLink>
         </li>
-        <li>
+        <li className="navbar-brand mb-0 h1">
           <NavLink to="/logout">Logout</NavLink>
         </li>
       </ul>
