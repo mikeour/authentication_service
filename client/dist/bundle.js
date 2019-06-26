@@ -34702,11 +34702,23 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Li = exports.Ul = exports.Div = exports.GlobalStyling = void 0;
+exports.StyledNavLink = exports.Li = exports.Ul = exports.Div = exports.GlobalStyling = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n  :hover {\n    color: blue;\n  }\n\n  :active {\n    color: yellow;\n  }\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral(["\n  padding: 10px;\n"]);
@@ -34764,7 +34776,9 @@ exports.Ul = Ul;
 var Li = _styledComponents.default.li(_templateObject4());
 
 exports.Li = Li;
-},{"styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App/index.js":[function(require,module,exports) {
+var StyledNavLink = (0, _styledComponents.default)(_reactRouterDom.NavLink)(_templateObject5());
+exports.StyledNavLink = StyledNavLink;
+},{"styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/App/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34807,15 +34821,15 @@ var App = function App() {
       globalUsername = _useContext.globalUsername,
       setGlobalUsername = _useContext.setGlobalUsername;
 
-  return _react.default.createElement(_styles.Div, null, _react.default.createElement(_styles.Ul, null, _react.default.createElement(_styles.Li, null, _react.default.createElement(_reactRouterDom.NavLink, {
+  return _react.default.createElement(_styles.Div, null, _react.default.createElement(_styles.Ul, null, _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
     to: "/"
-  }, "Home")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Home")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
     to: "/signup"
-  }, "Signup")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Signup")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
     to: "/login"
-  }, "Login")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Login")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
     to: "/secret"
-  }, "Secret")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_reactRouterDom.NavLink, {
+  }, "Secret")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
     to: "/logout"
   }, "Logout"))), _react.default.createElement(_Info.default, {
     globalUsername: globalUsername

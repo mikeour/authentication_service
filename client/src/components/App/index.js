@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "../Home";
 import Login from "../Login";
 import Signup from "../Signup";
@@ -8,7 +8,7 @@ import Secret from "../Secret";
 import Forbidden from "../Forbidden";
 import Info from "../Info";
 import WithAuth from "../WithAuth";
-import { GlobalStyling, Div, Ul, Li } from "./styles";
+import { GlobalStyling, Div, Ul, Li, StyledNavLink } from "./styles";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 const App = () => {
@@ -18,19 +18,19 @@ const App = () => {
     <Div>
       <Ul>
         <Li>
-          <NavLink to="/">Home</NavLink>
+          <StyledNavLink to="/">Home</StyledNavLink>
         </Li>
         <Li>
-          <NavLink to="/signup">Signup</NavLink>
+          <StyledNavLink to="/signup">Signup</StyledNavLink>
         </Li>
         <Li>
-          <NavLink to="/login">Login</NavLink>
+          <StyledNavLink to="/login">Login</StyledNavLink>
         </Li>
         <Li>
-          <NavLink to="/secret">Secret</NavLink>
+          <StyledNavLink to="/secret">Secret</StyledNavLink>
         </Li>
         <Li>
-          <NavLink to="/logout">Logout</NavLink>
+          <StyledNavLink to="/logout">Logout</StyledNavLink>
         </Li>
       </Ul>
 

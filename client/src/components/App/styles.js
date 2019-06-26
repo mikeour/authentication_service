@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const GlobalStyling = createGlobalStyle`
   * {
@@ -27,4 +28,14 @@ const Li = styled.li`
   padding: 10px;
 `;
 
-export { GlobalStyling, Div, Ul, Li };
+const StyledNavLink = styled(NavLink)`
+  :hover {
+    color: blue;
+  }
+
+  :active {
+    color: yellow;
+  }
+`;
+
+export { GlobalStyling, Div, Ul, Li, StyledNavLink };
