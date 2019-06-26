@@ -1,12 +1,30 @@
-import { css } from "@emotion/core";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-const appStyles = css`
-  border: 20px solid blue;
+const GlobalStyling = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+  }
 `;
 
-const Test = styled.div`
-  border: 15px solid red;
+const Div = styled.div`
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  text-align: center;
 `;
 
-export { appStyles, Test };
+const Ul = styled.ul`
+  display: flex;
+  justify-content: center;
+  list-style: none;
+`;
+
+const Li = styled.li`
+  padding: 10px;
+`;
+
+export { GlobalStyling, Div, Ul, Li };

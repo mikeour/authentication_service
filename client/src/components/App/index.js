@@ -8,30 +8,31 @@ import Secret from "../Secret";
 import Forbidden from "../Forbidden";
 import Info from "../Info";
 import WithAuth from "../WithAuth";
+import { GlobalStyling, Div, Ul, Li } from "./styles";
 import { AuthContext } from "../../context/AuthContext.jsx";
 
 const App = () => {
   const { globalUsername, setGlobalUsername } = useContext(AuthContext);
 
   return (
-    <div>
-      <ul>
-        <li>
+    <Div>
+      <Ul>
+        <Li>
           <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
+        </Li>
+        <Li>
           <NavLink to="/signup">Signup</NavLink>
-        </li>
-        <li>
+        </Li>
+        <Li>
           <NavLink to="/login">Login</NavLink>
-        </li>
-        <li>
+        </Li>
+        <Li>
           <NavLink to="/secret">Secret</NavLink>
-        </li>
-        <li>
+        </Li>
+        <Li>
           <NavLink to="/logout">Logout</NavLink>
-        </li>
-      </ul>
+        </Li>
+      </Ul>
 
       <Info globalUsername={globalUsername} />
 
@@ -52,7 +53,8 @@ const App = () => {
           )}
         />
       </Switch>
-    </div>
+      <GlobalStyling />
+    </Div>
   );
 };
 
