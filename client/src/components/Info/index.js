@@ -1,15 +1,16 @@
 import React from "react";
+import { Span } from "./styles";
 
 const Info = ({ globalUsername }) => {
   if (!globalUsername) {
-    return <span>You are not logged in.</span>;
+    return <Span>You are not logged in.</Span>;
   }
 
   if (globalUsername === "Incorrect password!") {
-    return <span>Sorry, wrong password. Please try again.</span>;
+    return <Span>Sorry, wrong password. Please try again.</Span>;
   }
 
-  return <span>You are currently logged in as {globalUsername}.</span>;
+  return <Span>You are currently logged in as {globalUsername}.</Span>;
 };
 
 export default Info;

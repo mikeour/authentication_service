@@ -7,6 +7,8 @@ const Div = styled.div`
   overflow: hidden;
   padding: 0 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Ul = styled.ul`
@@ -24,6 +26,7 @@ const Li = styled.li`
 
   :hover {
     background: blue;
+    opacity: 0.7;
   }
 `;
 

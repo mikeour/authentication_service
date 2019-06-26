@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form } from "../../shared/styles/";
 import axios from "axios";
 
 const Signup = () => {
@@ -21,7 +22,7 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <h1>Signup Below!</h1>
       <input
         type="text"
@@ -40,7 +41,7 @@ const Signup = () => {
         required
       />
       <input type="submit" value="Submit" />
-    </form>
+    </Form>
   );
 };
 

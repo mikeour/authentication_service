@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyling = createGlobalStyle`
   * {
@@ -9,4 +9,8 @@ const GlobalStyling = createGlobalStyle`
   }
 `;
 
-export { GlobalStyling };
+const Form = styled.form`
+  border: 3px solid #f1f1f1;
+`;
+
+export { GlobalStyling, Form };

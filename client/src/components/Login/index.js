@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form } from "../../shared/styles/";
 import axios from "axios";
 
 const Login = ({ setGlobalUsername }) => {
@@ -25,7 +26,7 @@ const Login = ({ setGlobalUsername }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <h1>Login Below!</h1>
       <input
         type="text"
@@ -44,7 +45,7 @@ const Login = ({ setGlobalUsername }) => {
         required
       />
       <input type="submit" value="Submit" />
-    </form>
+    </Form>
   );
 };
 
