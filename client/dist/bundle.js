@@ -34696,59 +34696,15 @@ if ("development" !== 'production' && "development" !== 'test' && typeof window 
 
 var _default = styled;
 exports.default = _default;
-},{"stylis/stylis.min":"../../node_modules/stylis/stylis.min.js","stylis-rule-sheet":"../../node_modules/stylis-rule-sheet/index.js","react":"../../node_modules/react/index.js","@emotion/unitless":"../../node_modules/@emotion/unitless/dist/unitless.browser.esm.js","react-is":"../../node_modules/react-is/index.js","memoize-one":"../../node_modules/memoize-one/dist/memoize-one.esm.js","prop-types":"../../node_modules/prop-types/index.js","@emotion/is-prop-valid":"../../node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","merge-anything":"../../node_modules/merge-anything/dist/index.esm.js","process":"../../node_modules/process/browser.js"}],"components/App/styles.js":[function(require,module,exports) {
+},{"stylis/stylis.min":"../../node_modules/stylis/stylis.min.js","stylis-rule-sheet":"../../node_modules/stylis-rule-sheet/index.js","react":"../../node_modules/react/index.js","@emotion/unitless":"../../node_modules/@emotion/unitless/dist/unitless.browser.esm.js","react-is":"../../node_modules/react-is/index.js","memoize-one":"../../node_modules/memoize-one/dist/memoize-one.esm.js","prop-types":"../../node_modules/prop-types/index.js","@emotion/is-prop-valid":"../../node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","merge-anything":"../../node_modules/merge-anything/dist/index.esm.js","process":"../../node_modules/process/browser.js"}],"shared/styles/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.StyledNavLink = exports.Li = exports.Ul = exports.Div = exports.GlobalStyling = void 0;
+exports.GlobalStyling = void 0;
 
-var _styledComponents = _interopRequireWildcard(require("styled-components"));
-
-var _reactRouterDom = require("react-router-dom");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  :hover {\n    color: blue;\n  }\n\n  :active {\n    color: yellow;\n  }\n"]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  padding: 10px;\n"]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  list-style: none;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 1100px;\n  margin: auto;\n  overflow: hidden;\n  padding: 0 2rem;\n  text-align: center;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
+var _styledComponents = require("styled-components");
 
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n    font-family: 'Roboto', sans-serif;\n  }\n"]);
@@ -34764,19 +34720,74 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var GlobalStyling = (0, _styledComponents.createGlobalStyle)(_templateObject());
 exports.GlobalStyling = GlobalStyling;
+},{"styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/App/styles.js":[function(require,module,exports) {
+"use strict";
 
-var Div = _styledComponents.default.div(_templateObject2());
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.StyledNavLink = exports.Li = exports.Ul = exports.Div = void 0;
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _reactRouterDom = require("react-router-dom");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  color: yellow;\n\n  :visited,\n  :active,\n  :hover {\n    color: red;\n  }\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n  padding: 10px;\n  margin: 15px;\n  border: 1px solid black;\n  border-radius: 5px;\n  background: yellow;\n\n  :hover {\n    background: blue;\n  }\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  list-style: none;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  max-width: 1100px;\n  margin: auto;\n  overflow: hidden;\n  padding: 0 2rem;\n  text-align: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Div = _styledComponents.default.div(_templateObject());
 
 exports.Div = Div;
 
-var Ul = _styledComponents.default.ul(_templateObject3());
+var Ul = _styledComponents.default.ul(_templateObject2());
 
 exports.Ul = Ul;
 
-var Li = _styledComponents.default.li(_templateObject4());
+var Li = _styledComponents.default.li(_templateObject3());
 
 exports.Li = Li;
-var StyledNavLink = (0, _styledComponents.default)(_reactRouterDom.NavLink)(_templateObject5());
+var StyledNavLink = (0, _styledComponents.default)(_reactRouterDom.NavLink)(_templateObject4());
 exports.StyledNavLink = StyledNavLink;
 },{"styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/App/index.js":[function(require,module,exports) {
 "use strict";
@@ -34806,7 +34817,9 @@ var _Info = _interopRequireDefault(require("../Info"));
 
 var _WithAuth = _interopRequireDefault(require("../WithAuth"));
 
-var _styles = require("./styles");
+var _styles = require("../../shared/styles/");
+
+var _styles2 = require("./styles");
 
 var _AuthContext = require("../../context/AuthContext.jsx");
 
@@ -34821,15 +34834,15 @@ var App = function App() {
       globalUsername = _useContext.globalUsername,
       setGlobalUsername = _useContext.setGlobalUsername;
 
-  return _react.default.createElement(_styles.Div, null, _react.default.createElement(_styles.Ul, null, _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
+  return _react.default.createElement(_styles2.Div, null, _react.default.createElement(_styles2.Ul, null, _react.default.createElement(_styles2.Li, null, _react.default.createElement(_styles2.StyledNavLink, {
     to: "/"
-  }, "Home")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
+  }, "Home")), _react.default.createElement(_styles2.Li, null, _react.default.createElement(_styles2.StyledNavLink, {
     to: "/signup"
-  }, "Signup")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
+  }, "Signup")), _react.default.createElement(_styles2.Li, null, _react.default.createElement(_styles2.StyledNavLink, {
     to: "/login"
-  }, "Login")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
+  }, "Login")), _react.default.createElement(_styles2.Li, null, _react.default.createElement(_styles2.StyledNavLink, {
     to: "/secret"
-  }, "Secret")), _react.default.createElement(_styles.Li, null, _react.default.createElement(_styles.StyledNavLink, {
+  }, "Secret")), _react.default.createElement(_styles2.Li, null, _react.default.createElement(_styles2.StyledNavLink, {
     to: "/logout"
   }, "Logout"))), _react.default.createElement(_Info.default, {
     globalUsername: globalUsername
@@ -34862,7 +34875,7 @@ var App = function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"components/Home/index.js","../Login":"components/Login/index.js","../Signup":"components/Signup/index.js","../Logout":"components/Logout/index.js","../Secret":"components/Secret/index.js","../Forbidden":"components/Forbidden/index.js","../Info":"components/Info/index.js","../WithAuth":"components/WithAuth.jsx","./styles":"components/App/styles.js","../../context/AuthContext.jsx":"context/AuthContext.jsx"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../Home":"components/Home/index.js","../Login":"components/Login/index.js","../Signup":"components/Signup/index.js","../Logout":"components/Logout/index.js","../Secret":"components/Secret/index.js","../Forbidden":"components/Forbidden/index.js","../Info":"components/Info/index.js","../WithAuth":"components/WithAuth.jsx","../../shared/styles/":"shared/styles/index.js","./styles":"components/App/styles.js","../../context/AuthContext.jsx":"context/AuthContext.jsx"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

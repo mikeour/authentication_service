@@ -1,14 +1,5 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
-const GlobalStyling = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-  }
-`;
 
 const Div = styled.div`
   max-width: 1100px;
@@ -26,16 +17,25 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   padding: 10px;
+  margin: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: yellow;
+
+  :hover {
+    background: blue;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
-  :hover {
-    color: blue;
-  }
+  text-decoration: none;
+  color: yellow;
 
-  :active {
-    color: yellow;
+  :visited,
+  :active,
+  :hover {
+    color: red;
   }
 `;
 
-export { GlobalStyling, Div, Ul, Li, StyledNavLink };
+export { Div, Ul, Li, StyledNavLink };
