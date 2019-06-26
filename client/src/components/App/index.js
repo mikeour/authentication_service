@@ -8,9 +8,9 @@ import Secret from "../Secret";
 import Forbidden from "../Forbidden";
 import Info from "../Info";
 import WithAuth from "../WithAuth";
+import { AuthContext } from "../../shared/context/";
 import { GlobalStyling } from "../../shared/styles/";
 import { Div, Ul, Li, StyledNavLink } from "./styles";
-import { AuthContext } from "../../context/AuthContext.jsx";
 
 const App = () => {
   const { globalUsername, setGlobalUsername } = useContext(AuthContext);
