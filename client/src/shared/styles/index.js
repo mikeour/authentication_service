@@ -7,6 +7,12 @@ const GlobalStyling = createGlobalStyle`
     margin: 0;
     font-family: 'Roboto', sans-serif;
   }
+
+  body {
+    height: 100vh;
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,227,1) 100%);
+  }
 `;
 
 const H1 = styled.h1`
@@ -14,8 +20,9 @@ const H1 = styled.h1`
 `;
 
 const Form = styled.form`
-  border: 3px solid #666161;
+  border: 1px solid #666161;
   padding: 40px;
+  background: white;
   border-radius: 25px;
 `;
 

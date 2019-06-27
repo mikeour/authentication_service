@@ -34396,7 +34396,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  border: 3px solid #666161;\n  padding: 40px;\n  border-radius: 25px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  border: 1px solid #666161;\n  padding: 40px;\n  background: white;\n  border-radius: 25px;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34416,7 +34416,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n    font-family: 'Roboto', sans-serif;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n    padding: 0;\n    margin: 0;\n    font-family: 'Roboto', sans-serif;\n  }\n\n  body {\n    height: 100vh;\n    background: rgb(63,94,251);\n    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,227,1) 100%);\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -34883,7 +34883,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  padding: 10px;\n  margin: 15px;\n  border: 1px solid black;\n  border-radius: 5px;\n  background: #2196f3;\n  opacity: 1;\n\n  :hover {\n    opacity: 0.8;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: 10px 15px;\n  margin: 15px;\n  border-radius: 5px;\n  background: #2196f3;\n  opacity: 1;\n\n  :hover {\n    opacity: 0.8;\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34903,7 +34903,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 500px;\n  margin: auto;\n  overflow: hidden;\n  padding: 40px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 40%;\n  margin: auto;\n  overflow: hidden;\n  padding: 40px;\n  border: 1px solid black;\n  border-radius: 10px;\n  background: white;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n"]);
 
   _templateObject = function _templateObject() {
     return data;

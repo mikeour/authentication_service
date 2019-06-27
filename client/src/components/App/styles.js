@@ -2,10 +2,13 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const Div = styled.div`
-  max-width: 500px;
+  max-width: 40%;
   margin: auto;
   overflow: hidden;
   padding: 40px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: white;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -18,9 +21,8 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
-  padding: 10px;
+  padding: 10px 15px;
   margin: 15px;
-  border: 1px solid black;
   border-radius: 5px;
   background: #2196f3;
   opacity: 1;
