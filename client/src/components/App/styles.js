@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 const Div = styled.div`
-  max-width: 1100px;
+  max-width: 500px;
   margin: auto;
   overflow: hidden;
-  padding: 0 2rem;
+  padding: 40px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -22,22 +22,22 @@ const Li = styled.li`
   margin: 15px;
   border: 1px solid black;
   border-radius: 5px;
-  background: yellow;
+  background: #2196f3;
+  opacity: 1;
 
   :hover {
-    background: blue;
-    opacity: 0.7;
+    opacity: 0.8;
   }
 `;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: yellow;
+  color: white;
 
   :visited,
   :active,
   :hover {
-    color: red;
+    color: white;
   }
 `;
 

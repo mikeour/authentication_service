@@ -34369,14 +34369,44 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Form = exports.GlobalStyling = void 0;
+exports.Submit = exports.Input = exports.Form = exports.H1 = exports.GlobalStyling = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n  background-color: #4caf50;\n  color: white;\n  padding: 14px 20px;\n  margin: 8px 0;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  width: 60%;\n  opacity: 0.9;\n\n  :hover {\n    opacity: 1;\n  }\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n  width: 85%;\n  padding: 15px;\n  margin: 5px 0 22px 0;\n  display: inline-block;\n  border: 1px solid black;\n  border-radius: 2px;\n  background: #f1f1f1;\n\n  :focus {\n    background-color: #ddd;\n    outline: none;\n  }\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n  border: 3px solid #666161;\n  padding: 40px;\n  border-radius: 25px;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  border: 3px solid #f1f1f1;\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: 7px;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -34400,9 +34430,21 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var GlobalStyling = (0, _styledComponents.createGlobalStyle)(_templateObject());
 exports.GlobalStyling = GlobalStyling;
 
-var Form = _styledComponents.default.form(_templateObject2());
+var H1 = _styledComponents.default.h1(_templateObject2());
+
+exports.H1 = H1;
+
+var Form = _styledComponents.default.form(_templateObject3());
 
 exports.Form = Form;
+
+var Input = _styledComponents.default.input(_templateObject4());
+
+exports.Input = Input;
+
+var Submit = _styledComponents.default.input(_templateObject5());
+
+exports.Submit = Submit;
 },{"styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Login/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -34466,21 +34508,21 @@ var Login = function Login(_ref) {
 
   return _react.default.createElement(_styles.Form, {
     onSubmit: handleSubmit
-  }, _react.default.createElement("h1", null, "Login Below!"), _react.default.createElement("input", {
+  }, _react.default.createElement(_styles.H1, null, "Login"), _react.default.createElement(_styles.Input, {
     type: "text",
     name: "username",
     placeholder: "Enter username",
     value: username,
     onChange: handleUsername,
     required: true
-  }), _react.default.createElement("input", {
-    type: "text",
+  }), _react.default.createElement(_styles.Input, {
+    type: "password",
     name: "password",
     placeholder: "Enter password",
     value: password,
     onChange: handlePassword,
     required: true
-  }), _react.default.createElement("input", {
+  }), _react.default.createElement(_styles.Submit, {
     type: "submit",
     value: "Submit"
   }));
@@ -34546,21 +34588,21 @@ var Signup = function Signup() {
 
   return _react.default.createElement(_styles.Form, {
     onSubmit: handleSubmit
-  }, _react.default.createElement("h1", null, "Signup Below!"), _react.default.createElement("input", {
+  }, _react.default.createElement(_styles.H1, null, "Signup"), _react.default.createElement(_styles.Input, {
     type: "text",
     name: "username",
     placeholder: "Enter username",
     value: username,
     onChange: handleUsername,
     required: true
-  }), _react.default.createElement("input", {
-    type: "text",
+  }), _react.default.createElement(_styles.Input, {
+    type: "password",
     name: "password",
     placeholder: "Enter password",
     value: password,
     onChange: handlePassword,
     required: true
-  }), _react.default.createElement("input", {
+  }), _react.default.createElement(_styles.Submit, {
     type: "submit",
     value: "Submit"
   }));
@@ -34784,7 +34826,7 @@ var _reactRouterDom = require("react-router-dom");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  color: yellow;\n\n  :visited,\n  :active,\n  :hover {\n    color: red;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  color: white;\n\n  :visited,\n  :active,\n  :hover {\n    color: white;\n  }\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -34794,7 +34836,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  padding: 10px;\n  margin: 15px;\n  border: 1px solid black;\n  border-radius: 5px;\n  background: yellow;\n\n  :hover {\n    background: blue;\n    opacity: 0.7;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: 10px;\n  margin: 15px;\n  border: 1px solid black;\n  border-radius: 5px;\n  background: #2196f3;\n  opacity: 1;\n\n  :hover {\n    opacity: 0.8;\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34814,7 +34856,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 1100px;\n  margin: auto;\n  overflow: hidden;\n  padding: 0 2rem;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 500px;\n  margin: auto;\n  overflow: hidden;\n  padding: 40px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n"]);
 
   _templateObject = function _templateObject() {
     return data;

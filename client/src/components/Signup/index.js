@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form } from "../../shared/styles/";
+import { Form, Input, Submit, H1 } from "../../shared/styles/";
 import axios from "axios";
 
 const Signup = () => {
@@ -23,8 +23,8 @@ const Signup = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h1>Signup Below!</h1>
-      <input
+      <H1>Signup</H1>
+      <Input
         type="text"
         name="username"
         placeholder="Enter username"
@@ -32,15 +32,15 @@ const Signup = () => {
         onChange={handleUsername}
         required
       />
-      <input
-        type="text"
+      <Input
+        type="password"
         name="password"
         placeholder="Enter password"
         value={password}
         onChange={handlePassword}
         required
       />
-      <input type="submit" value="Submit" />
+      <Submit type="submit" value="Submit" />
     </Form>
   );
 };
