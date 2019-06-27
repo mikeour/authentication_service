@@ -15,10 +15,10 @@ const Info = ({ globalUsername }) => {
     return <Span>Sorry, those passwords do not match. Please try again.</Span>;
   }
 
-  if (globalUsername === "Sucess. Account created") {
+  if (globalUsername === "Success. Account created") {
     return (
       <Span>
-        Sucess! Account created. You can now <Link to="/login">login</Link>.
+        Success! Account created. You can now <Link to="/login">login</Link>.
       </Span>
     );
   }

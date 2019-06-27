@@ -41,6 +41,7 @@ const Submit = styled.input`
   margin: 8px 0;
   border: none;
   border-radius: 5px;
+  font-size: 15px;
   cursor: pointer;
   width: 60%;
   opacity: 0.9;

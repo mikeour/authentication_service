@@ -7,35 +7,27 @@ const Signup = ({ setGlobalUsername }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const handleUsername = e => {
-    const { value } = e.target;
-    setUsername(value);
+  const resetValues = () => {
+    setUsername("");
+    setPassword("");
+    setRepeatPassword("");
   };
 
-  const handlePassword = e => {
+  const handleChange = (e, func) => {
     const { value } = e.target;
-    setPassword(value);
-  };
-
-  const handleRepeatPassword = e => {
-    const { value } = e.target;
-    setRepeatPassword(value);
+    func(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     if (password === repeatPassword) {
       axios.post("/api/register", { username, password }).then(() => {
-        setGlobalUsername("Sucess. Account created");
-        setUsername("");
-        setPassword("");
-        setRepeatPassword("");
+        setGlobalUsername("Success. Account created");
+        resetValues();
       });
     } else {
       setGlobalUsername("Passwords do not match");
-      setUsername("");
-      setPassword("");
-      setRepeatPassword("");
+      resetValues();
     }
   };
 
@@ -47,7 +39,7 @@ const Signup = ({ setGlobalUsername }) => {
         name="username"
         placeholder="Enter username"
         value={username}
-        onChange={handleUsername}
+        onChange={e => handleChange(e, setUsername)}
         required
       />
       <Input
@@ -55,7 +47,7 @@ const Signup = ({ setGlobalUsername }) => {
         name="password"
         placeholder="Enter password"
         value={password}
-        onChange={handlePassword}
+        onChange={e => handleChange(e, setPassword)}
         required
       />
       <Input
@@ -63,7 +55,7 @@ const Signup = ({ setGlobalUsername }) => {
         name="password"
         placeholder="Repeat password here"
         value={repeatPassword}
-        onChange={handleRepeatPassword}
+        onChange={e => handleChange(e, setRepeatPassword)}
         required
       />
       <Submit type="submit" value="Submit" />

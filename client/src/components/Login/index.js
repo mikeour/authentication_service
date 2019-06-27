@@ -6,14 +6,14 @@ const Login = ({ setGlobalUsername }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleUsername = e => {
-    const { value } = e.target;
-    setUsername(value);
+  const resetValues = () => {
+    setUsername("");
+    setPassword("");
   };
 
-  const handlePassword = e => {
+  const handleChange = (e, func) => {
     const { value } = e.target;
-    setPassword(value);
+    func(value);
   };
 
   const handleSubmit = e => {
@@ -24,8 +24,7 @@ const Login = ({ setGlobalUsername }) => {
         setGlobalUsername(name);
       })
       .then(() => {
-        setUsername("");
-        setPassword("");
+        resetValues();
       });
   };
 
@@ -37,7 +36,7 @@ const Login = ({ setGlobalUsername }) => {
         name="username"
         placeholder="Enter username"
         value={username}
-        onChange={handleUsername}
+        onChange={e => handleChange(e, setUsername)}
         required
       />
       <Input
@@ -45,7 +44,7 @@ const Login = ({ setGlobalUsername }) => {
         name="password"
         placeholder="Enter password"
         value={password}
-        onChange={handlePassword}
+        onChange={e => handleChange(e, setPassword)}
         required
       />
       <Submit type="submit" value="Submit" />

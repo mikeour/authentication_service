@@ -34376,7 +34376,7 @@ var _styledComponents = _interopRequireWildcard(require("styled-components"));
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  background-color: #4caf50;\n  color: white;\n  padding: 14px 20px;\n  margin: 8px 0;\n  border: none;\n  border-radius: 5px;\n  cursor: pointer;\n  width: 60%;\n  opacity: 0.9;\n\n  :hover {\n    opacity: 1;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: #4caf50;\n  color: white;\n  padding: 14px 20px;\n  margin: 8px 0;\n  border: none;\n  border-radius: 5px;\n  font-size: 15px;\n  cursor: pointer;\n  width: 60%;\n  opacity: 0.9;\n\n  :hover {\n    opacity: 1;\n  }\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -34484,14 +34484,14 @@ var Login = function Login(_ref) {
       password = _useState4[0],
       setPassword = _useState4[1];
 
-  var handleUsername = function handleUsername(e) {
-    var value = e.target.value;
-    setUsername(value);
+  var resetValues = function resetValues() {
+    setUsername("");
+    setPassword("");
   };
 
-  var handlePassword = function handlePassword(e) {
+  var handleChange = function handleChange(e, func) {
     var value = e.target.value;
-    setPassword(value);
+    func(value);
   };
 
   var handleSubmit = function handleSubmit(e) {
@@ -34504,8 +34504,7 @@ var Login = function Login(_ref) {
       var name = _ref2.data;
       setGlobalUsername(name);
     }).then(function () {
-      setUsername("");
-      setPassword("");
+      resetValues();
     });
   };
 
@@ -34516,14 +34515,18 @@ var Login = function Login(_ref) {
     name: "username",
     placeholder: "Enter username",
     value: username,
-    onChange: handleUsername,
+    onChange: function onChange(e) {
+      return handleChange(e, setUsername);
+    },
     required: true
   }), _react.default.createElement(_styles.Input, {
     type: "password",
     name: "password",
     placeholder: "Enter password",
     value: password,
-    onChange: handlePassword,
+    onChange: function onChange(e) {
+      return handleChange(e, setPassword);
+    },
     required: true
   }), _react.default.createElement(_styles.Submit, {
     type: "submit",
@@ -34577,19 +34580,15 @@ var Signup = function Signup(_ref) {
       repeatPassword = _useState6[0],
       setRepeatPassword = _useState6[1];
 
-  var handleUsername = function handleUsername(e) {
-    var value = e.target.value;
-    setUsername(value);
+  var resetValues = function resetValues() {
+    setUsername("");
+    setPassword("");
+    setRepeatPassword("");
   };
 
-  var handlePassword = function handlePassword(e) {
+  var handleChange = function handleChange(e, func) {
     var value = e.target.value;
-    setPassword(value);
-  };
-
-  var handleRepeatPassword = function handleRepeatPassword(e) {
-    var value = e.target.value;
-    setRepeatPassword(value);
+    func(value);
   };
 
   var handleSubmit = function handleSubmit(e) {
@@ -34600,16 +34599,12 @@ var Signup = function Signup(_ref) {
         username: username,
         password: password
       }).then(function () {
-        setGlobalUsername("Sucess. Account created");
-        setUsername("");
-        setPassword("");
-        setRepeatPassword("");
+        setGlobalUsername("Success. Account created");
+        resetValues();
       });
     } else {
       setGlobalUsername("Passwords do not match");
-      setUsername("");
-      setPassword("");
-      setRepeatPassword("");
+      resetValues();
     }
   };
 
@@ -34620,21 +34615,27 @@ var Signup = function Signup(_ref) {
     name: "username",
     placeholder: "Enter username",
     value: username,
-    onChange: handleUsername,
+    onChange: function onChange(e) {
+      return handleChange(e, setUsername);
+    },
     required: true
   }), _react.default.createElement(_styles.Input, {
     type: "password",
     name: "password",
     placeholder: "Enter password",
     value: password,
-    onChange: handlePassword,
+    onChange: function onChange(e) {
+      return handleChange(e, setPassword);
+    },
     required: true
   }), _react.default.createElement(_styles.Input, {
     type: "password",
     name: "password",
     placeholder: "Repeat password here",
     value: repeatPassword,
-    onChange: handleRepeatPassword,
+    onChange: function onChange(e) {
+      return handleChange(e, setRepeatPassword);
+    },
     required: true
   }), _react.default.createElement(_styles.Submit, {
     type: "submit",
@@ -34797,8 +34798,8 @@ var Info = function Info(_ref) {
     return _react.default.createElement(_styles.Span, null, "Sorry, those passwords do not match. Please try again.");
   }
 
-  if (globalUsername === "Sucess. Account created") {
-    return _react.default.createElement(_styles.Span, null, "Sucess! Account created. You can now ", _react.default.createElement(_reactRouterDom.Link, {
+  if (globalUsername === "Success. Account created") {
+    return _react.default.createElement(_styles.Span, null, "Success! Account created. You can now ", _react.default.createElement(_reactRouterDom.Link, {
       to: "/login"
     }, "login"), ".");
   }
