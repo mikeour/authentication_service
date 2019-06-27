@@ -22,6 +22,10 @@ const Login = ({ setGlobalUsername }) => {
       .post("/api/authenticate", { username, password })
       .then(({ data: name }) => {
         setGlobalUsername(name);
+      })
+      .then(() => {
+        setUsername("");
+        setPassword("");
       });
   };
 

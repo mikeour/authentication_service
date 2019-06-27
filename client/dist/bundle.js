@@ -34503,6 +34503,9 @@ var Login = function Login(_ref) {
     }).then(function (_ref2) {
       var name = _ref2.data;
       setGlobalUsername(name);
+    }).then(function () {
+      setUsername("");
+      setPassword("");
     });
   };
 
@@ -34556,7 +34559,9 @@ function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = 
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var Signup = function Signup() {
+var Signup = function Signup(_ref) {
+  var setGlobalUsername = _ref.setGlobalUsername;
+
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       username = _useState2[0],
@@ -34566,6 +34571,11 @@ var Signup = function Signup() {
       _useState4 = _slicedToArray(_useState3, 2),
       password = _useState4[0],
       setPassword = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      repeatPassword = _useState6[0],
+      setRepeatPassword = _useState6[1];
 
   var handleUsername = function handleUsername(e) {
     var value = e.target.value;
@@ -34577,13 +34587,30 @@ var Signup = function Signup() {
     setPassword(value);
   };
 
+  var handleRepeatPassword = function handleRepeatPassword(e) {
+    var value = e.target.value;
+    setRepeatPassword(value);
+  };
+
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
-    _axios.default.post("/api/register", {
-      username: username,
-      password: password
-    });
+    if (password === repeatPassword) {
+      _axios.default.post("/api/register", {
+        username: username,
+        password: password
+      }).then(function () {
+        setGlobalUsername("Sucess. Account created");
+        setUsername("");
+        setPassword("");
+        setRepeatPassword("");
+      });
+    } else {
+      setGlobalUsername("Passwords do not match");
+      setUsername("");
+      setPassword("");
+      setRepeatPassword("");
+    }
   };
 
   return _react.default.createElement(_styles.Form, {
@@ -34601,6 +34628,13 @@ var Signup = function Signup() {
     placeholder: "Enter password",
     value: password,
     onChange: handlePassword,
+    required: true
+  }), _react.default.createElement(_styles.Input, {
+    type: "password",
+    name: "password",
+    placeholder: "Repeat password here",
+    value: repeatPassword,
+    onChange: handleRepeatPassword,
     required: true
   }), _react.default.createElement(_styles.Submit, {
     type: "submit",
@@ -34742,6 +34776,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _styles = require("./styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -34754,7 +34790,17 @@ var Info = function Info(_ref) {
   }
 
   if (globalUsername === "Incorrect password!") {
-    return _react.default.createElement(_styles.Span, null, "Sorry, wrong password. Please try again.");
+    return _react.default.createElement(_styles.Span, null, "Sorry, that password is incorrect. Please try again.");
+  }
+
+  if (globalUsername === "Passwords do not match") {
+    return _react.default.createElement(_styles.Span, null, "Sorry, those passwords do not match. Please try again.");
+  }
+
+  if (globalUsername === "Sucess. Account created") {
+    return _react.default.createElement(_styles.Span, null, "Sucess! Account created. You can now ", _react.default.createElement(_reactRouterDom.Link, {
+      to: "/login"
+    }, "login"), ".");
   }
 
   return _react.default.createElement(_styles.Span, null, "You are currently logged in as ", globalUsername, ".");
@@ -34762,7 +34808,7 @@ var Info = function Info(_ref) {
 
 var _default = Info;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","./styles":"components/Info/styles.js"}],"components/WithAuth.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","./styles":"components/Info/styles.js"}],"components/WithAuth.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34943,7 +34989,11 @@ var App = function App() {
     component: _Home.default
   }), _react.default.createElement(_reactRouterDom.Route, {
     path: "/signup",
-    component: _Signup.default
+    render: function render(props) {
+      return _react.default.createElement(_Signup.default, _extends({}, props, {
+        setGlobalUsername: setGlobalUsername
+      }));
+    }
   }), _react.default.createElement(_reactRouterDom.Route, {
     path: "/login",
     render: function render(props) {

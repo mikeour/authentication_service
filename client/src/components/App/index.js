@@ -39,7 +39,12 @@ const App = () => {
 
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/signup" component={Signup} />
+        <Route
+          path="/signup"
+          render={props => (
+            <Signup {...props} setGlobalUsername={setGlobalUsername} />
+          )}
+        />
         <Route
           path="/login"
           render={props => (

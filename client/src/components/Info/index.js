@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Span } from "./styles";
 
 const Info = ({ globalUsername }) => {
@@ -7,7 +8,19 @@ const Info = ({ globalUsername }) => {
   }
 
   if (globalUsername === "Incorrect password!") {
-    return <Span>Sorry, wrong password. Please try again.</Span>;
+    return <Span>Sorry, that password is incorrect. Please try again.</Span>;
+  }
+
+  if (globalUsername === "Passwords do not match") {
+    return <Span>Sorry, those passwords do not match. Please try again.</Span>;
+  }
+
+  if (globalUsername === "Sucess. Account created") {
+    return (
+      <Span>
+        Sucess! Account created. You can now <Link to="/login">login</Link>.
+      </Span>
+    );
   }
 
   return <Span>You are currently logged in as {globalUsername}.</Span>;
