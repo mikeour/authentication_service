@@ -58,4 +58,8 @@ const Submit = styled.input`
   }
 `;
 
-export { GlobalStyling, H1, Form, Input, Submit };
+const P = styled.p`
+  padding: 60px 10px 20px 10px;
+`;
+
+export { GlobalStyling, H1, Form, Input, Submit, P };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { P } from "../../shared/styles/";
 import axios from "axios";
 
 const Secret = () => {
@@ -13,7 +14,7 @@ const Secret = () => {
   return (
     <div>
       <h1>Secret</h1>
-      {message}
+      <P>{message}</P>
     </div>
   );
 };
