@@ -34886,13 +34886,23 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.StyledNavLink = exports.Li = exports.Ul = exports.Div = void 0;
+exports.StyledSwitch = exports.StyledNavLink = exports.Li = exports.Ul = exports.Div = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n  border: 100px solid black;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral(["\n  text-decoration: none;\n  color: white;\n\n  :visited,\n  :active,\n  :hover {\n    color: white;\n  }\n"]);
@@ -34925,7 +34935,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 40%;\n  margin: auto;\n  overflow: hidden;\n  padding: 40px;\n  border: 1px solid black;\n  border-radius: 10px;\n  background: white;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 40%;\n  margin: auto;\n  overflow: hidden;\n  padding: 20px 40px;\n  border: 1px solid black;\n  border-radius: 10px;\n  background: white;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -34949,6 +34959,8 @@ var Li = _styledComponents.default.li(_templateObject3());
 exports.Li = Li;
 var StyledNavLink = (0, _styledComponents.default)(_reactRouterDom.NavLink)(_templateObject4());
 exports.StyledNavLink = StyledNavLink;
+var StyledSwitch = (0, _styledComponents.default)(_reactRouterDom.Switch)(_templateObject5());
+exports.StyledSwitch = StyledSwitch;
 },{"styled-components":"../../node_modules/styled-components/dist/styled-components.browser.esm.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/App/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -35006,7 +35018,7 @@ var App = function App() {
     to: "/logout"
   }, "Logout"))), _react.default.createElement(_Info.default, {
     globalUsername: globalUsername
-  }), _react.default.createElement(_reactRouterDom.Switch, null, _react.default.createElement(_reactRouterDom.Route, {
+  }), _react.default.createElement(_styles2.StyledSwitch, null, _react.default.createElement(_reactRouterDom.Route, {
     path: "/",
     exact: true,
     component: _Home.default
@@ -35084,7 +35096,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64690" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60869" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

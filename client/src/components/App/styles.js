@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, Switch } from "react-router-dom";
 
 const Div = styled.div`
   max-width: 40%;
   margin: auto;
   overflow: hidden;
-  padding: 40px;
+  padding: 20px 40px;
   border: 1px solid black;
   border-radius: 10px;
   background: white;
@@ -43,4 +43,8 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-export { Div, Ul, Li, StyledNavLink };
+const StyledSwitch = styled(Switch)`
+  border: 100px solid black;
+`;
+
+export { Div, Ul, Li, StyledNavLink, StyledSwitch };

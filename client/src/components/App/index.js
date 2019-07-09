@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Home from "../Home";
 import Login from "../Login";
 import Signup from "../Signup";
@@ -10,7 +10,7 @@ import Info from "../Info";
 import WithAuth from "../WithAuth";
 import { AuthContext } from "../../shared/context/";
 import { GlobalStyling } from "../../shared/styles/";
-import { Div, Ul, Li, StyledNavLink } from "./styles";
+import { Div, Ul, Li, StyledNavLink, StyledSwitch } from "./styles";
 
 const App = () => {
   const { globalUsername, setGlobalUsername } = useContext(AuthContext);
@@ -37,7 +37,7 @@ const App = () => {
 
       <Info globalUsername={globalUsername} />
 
-      <Switch>
+      <StyledSwitch>
         <Route path="/" exact component={Home} />
         <Route
           path="/signup"
@@ -58,7 +58,7 @@ const App = () => {
             <Logout {...props} setGlobalUsername={setGlobalUsername} />
           )}
         />
-      </Switch>
+      </StyledSwitch>
       <GlobalStyling />
     </Div>
   );
